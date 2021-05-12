@@ -6,6 +6,7 @@ import * as Geo from "../geo/index.js";
 import * as GT from "../geo/type.js";
 import * as Municipality from "../geo/municipality.js";
 import AverageSalary from "./average-salary.js";
+import BaseSummary from "./base-summary.js";
 export default () => {
   const [brut, setBrut] = React.useState("");
   const [lpp, setLpp] = React.useState("");
@@ -16,7 +17,7 @@ export default () => {
   }, /* @__PURE__ */ React.createElement(F.Input.Number, {
     value: brut,
     onChange: setBrut
-  }), brut && /* @__PURE__ */ React.createElement("span", null, U.formatAmount(brut / 12), "/mois")), /* @__PURE__ */ React.createElement(F.Wrapper, {
+  })), /* @__PURE__ */ React.createElement(F.Wrapper, {
     label: "LPP Yearly"
   }, /* @__PURE__ */ React.createElement(F.Input.Number, {
     value: lpp,
@@ -27,7 +28,9 @@ export default () => {
     value: canton,
     options: Geo.cantonListOptionSet,
     onChange: setCanton
-  }))), brut !== "" && lpp !== "" && /* @__PURE__ */ React.createElement(Table, {
+  }))), brut !== "" && /* @__PURE__ */ React.createElement(BaseSummary, {
+    base: brut
+  }), brut !== "" && lpp !== "" && /* @__PURE__ */ React.createElement(Table, {
     lppYearly: lpp,
     base: brut,
     deductions: U.getDeductions(brut)
