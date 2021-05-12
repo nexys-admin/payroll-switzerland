@@ -37,4 +37,9 @@ const AvgSalary = ({ canton }: { canton: GT.Canton }) => {
   );
 };
 
-export default AvgSalary;
+export default ({ canton }: { canton: GT.Canton }) => (
+  <>
+    <h2>Average Salary</h2>
+    <AvgSalary canton={canton} />
+  </>
+);
