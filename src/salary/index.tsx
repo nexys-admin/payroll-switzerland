@@ -5,17 +5,19 @@ import Table from "./table";
 
 import * as F from "../components/form/index";
 import * as Geo from "../geo";
+import * as GT from "../geo/type";
+import * as Municipality from "../geo/municipality";
 
 import AverageSalary from "./average-salary";
 
 export default (): JSX.Element => {
   const [brut, setBrut] = React.useState<number | "">("");
   const [lpp, setLpp] = React.useState<number | "">("");
-  const [canton, setCanton] = React.useState<Geo.Canton | undefined>(
-    Geo.Canton.VD
+  const [canton, setCanton] = React.useState<GT.Canton | undefined>(
+    GT.Canton.VD
   );
 
-  Geo.getMunicipalities().then((x) => console.log(x));
+  Municipality.get().then((x) => console.log(x));
 
   return (
     <>
@@ -29,7 +31,7 @@ export default (): JSX.Element => {
         </F.Wrapper>
 
         <F.Wrapper label="Canton">
-          <F.Select<Geo.Canton>
+          <F.Select<GT.Canton>
             value={canton}
             options={Geo.cantonListOptionSet}
             onChange={setCanton}

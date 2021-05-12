@@ -1,33 +1,4 @@
-//https://en.wikipedia.org/wiki/Cantons_of_Switzerlandenum
-
-export enum Canton {
-  ZH = "ZH",
-  BE = "BE",
-  LU = "LU",
-  UR = "UR",
-  SZ = "SZ",
-  OW = "OW",
-  NW = "NW",
-  GL = "GL",
-  ZG = "ZG",
-  FR = "FR",
-  SO = "SO",
-  BS = "BS",
-  BL = "BL",
-  SH = "SH",
-  AR = "AR",
-  AI = "AI",
-  SG = "SG",
-  GR = "GR",
-  AG = "AG",
-  TG = "TG",
-  TI = "TI",
-  VD = "VD",
-  VS = "VS",
-  NE = "NE",
-  GE = "GE",
-  JU = "JU",
-}
+import { Canton } from "./type";
 
 // https://business-cool.com/decryptage/international/salaire-moyen-suisse/
 export const avgSalary: [string, Canton, number][] = [
@@ -68,18 +39,3 @@ export const cantonListOptionSet: { id: Canton; name: string }[] =
 
     .map((x) => ({ id: x as Canton, name: Canton[x] }))
     .sort((a, b) => (a.name > b.name ? 1 : -1));
-
-export const getMunicipalities = async () => {
-  const filename = "/municipalities.tsv";
-  const r = await fetch(filename);
-  const t = await r.text();
-  const arr = t.split("\n").map((line) => line.split("\t"));
-
-  const check = arr.filter((x) => x.length !== 8).length > 0;
-
-  if (check) {
-    throw Error(`${filename} could not be read`);
-  }
-
-  return arr;
-};

@@ -1,18 +1,19 @@
 import React from "react";
 import * as U from "./utils";
 
+import * as GT from "../geo/type";
 import * as Geo from "../geo";
 
 const addressToGMapLink = (a: string) =>
   `https://www.google.com/maps?q=${encodeURIComponent(a)}`;
 
-const AvgSalary = ({ canton }: { canton: Geo.Canton }) => {
+const AvgSalary = ({ canton }: { canton: GT.Canton }) => {
   const lines = Geo.avgSalary.filter((x) => x[1] === canton);
 
   if (lines.length === 0) {
     return (
       <div className={"alert alert-warning"}>
-        Nothing found for canton {Geo.Canton[canton]}
+        Nothing found for canton {GT.Canton[canton]}
       </div>
     );
   }

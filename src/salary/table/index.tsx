@@ -39,51 +39,43 @@ const Table = ({
   const net = base - (avsTotal + lppYearly);
 
   return (
-    <>
-      <button id="button" aria-describedby="tooltip">
-        I'm a button
-      </button>
-      <div id="tooltip" role="tooltip">
-        I'm a tooltip
-      </div>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>GS</th>
-            <th>Label</th>
-            <th colSpan={2} style={{ textAlign: "center" }}>
-              Employee
-            </th>
-            <th colSpan={2} style={{ textAlign: "center" }}>
-              Employer
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <TotalRow label={"Base"} amount={base} gs={5000} key={0} />
-          {avsDeductions.map((d, i) => (
-            <TableRowDeduction key={100 + i} d={d} />
-          ))}
+    <table className="table table-striped">
+      <thead>
+        <tr>
+          <th>GS</th>
+          <th>Label</th>
+          <th colSpan={2} style={{ textAlign: "center" }}>
+            Employee
+          </th>
+          <th colSpan={2} style={{ textAlign: "center" }}>
+            Employer
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <TotalRow label={"Base"} amount={base} gs={5000} key={0} />
+        {avsDeductions.map((d, i) => (
+          <TableRowDeduction key={100 + i} d={d} />
+        ))}
 
-          <TotalRow label={"AVS Group"} amount={avsTotal} key={1} />
-          <TableRowDeduction
-            d={{
-              gs: 0,
-              label: "LPP",
-              type: T.DeductionType.LPP,
-              rate: { employee: 100 * (lppYearly / base) },
-              amount: { employee: lppYearly },
-            }}
-            key={2}
-          />
-          {nonAvsDeductions.map((d, i) => (
-            <TableRowDeduction d={d} key={200 + i} />
-          ))}
+        <TotalRow label={"AVS Group"} amount={avsTotal} key={1} />
+        <TableRowDeduction
+          d={{
+            gs: 0,
+            label: "LPP",
+            type: T.DeductionType.LPP,
+            rate: { employee: 100 * (lppYearly / base) },
+            amount: { employee: lppYearly },
+          }}
+          key={2}
+        />
+        {nonAvsDeductions.map((d, i) => (
+          <TableRowDeduction d={d} key={200 + i} />
+        ))}
 
-          <TotalRow label={"Net"} amount={net} key={3} />
-        </tbody>
-      </table>
-    </>
+        <TotalRow label={"Net"} amount={net} key={3} />
+      </tbody>
+    </table>
   );
 };
 
