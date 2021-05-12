@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React from "react";
+import Salary from "./salary";
 const ghUrl = "https://github.com/nexys-admin/payroll-switzerland";
 const sha = import.meta.env.SNOWPACK_GIT_SHA || "arandomsha";
 const ghUrlSha = `${ghUrl}/commit/${sha}`;
@@ -7,7 +7,8 @@ const ghUrlSha = `${ghUrl}/commit/${sha}`;
 export default () => (
   <>
     <h1>Payroll Switzerland</h1>
-    <p>Use the menu to browse the different options</p>
+
+    <Salary />
 
     <p>
       <a href={ghUrl}>
