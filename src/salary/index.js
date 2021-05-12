@@ -10,7 +10,7 @@ export default () => {
   }, /* @__PURE__ */ React.createElement(F.InputNumber, {
     value: brut,
     onChange: setBrut
-  })), /* @__PURE__ */ React.createElement(F.Wrapper, {
+  }), brut && U.formatAmount(brut / 12)), /* @__PURE__ */ React.createElement(F.Wrapper, {
     label: "LPP Yearly"
   }, /* @__PURE__ */ React.createElement(F.InputNumber, {
     value: lpp,
