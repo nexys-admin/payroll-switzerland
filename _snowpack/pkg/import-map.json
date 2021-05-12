@@ -2,6 +2,7 @@
   "imports": {
     "react": "./react.js",
     "react-dom": "./react-dom.js",
+    "react-popper": "./react-popper.js",
     "react-router-dom": "./react-router-dom.js"
   }
 }

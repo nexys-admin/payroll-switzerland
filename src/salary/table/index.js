@@ -1,12 +1,35 @@
-import React from "../../../_snowpack/pkg/react.js";
+import React, {useState} from "../../../_snowpack/pkg/react.js";
+import {usePopper} from "../../../_snowpack/pkg/react-popper.js";
 import * as U from "../utils.js";
 import * as T from "../type.js";
+const Example = () => {
+  const [referenceElement, setReferenceElement] = useState(null);
+  const [popperElement, setPopperElement] = useState(null);
+  const [arrowElement, setArrowElement] = useState(null);
+  const {styles, attributes} = usePopper(referenceElement, popperElement, {
+    modifiers: [{name: "arrow", options: {element: arrowElement}}]
+  });
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("button", {
+    type: "button",
+    ref: setReferenceElement
+  }, "Reference element"), /* @__PURE__ */ React.createElement("div", {
+    ref: setPopperElement,
+    style: styles.popper,
+    ...attributes.popper
+  }, "Popper element", /* @__PURE__ */ React.createElement("div", {
+    ref: setArrowElement,
+    style: styles.arrow
+  })));
+};
 const AVSGroup = [
   T.DeductionType.AVS,
   T.DeductionType.AC1,
   T.DeductionType.AC2
 ];
-const TableRowDeduction = ({d}) => /* @__PURE__ */ React.createElement("tr", null, /* @__PURE__ */ React.createElement("td", null, d.gs), /* @__PURE__ */ React.createElement("td", null, d.label, " ", T.DeductionType[d.type]), /* @__PURE__ */ React.createElement("td", {
+const TableRowDeduction = ({d}) => /* @__PURE__ */ React.createElement("tr", null, /* @__PURE__ */ React.createElement("td", null, d.gs), /* @__PURE__ */ React.createElement("td", null, d.label, " ", T.DeductionType[d.type], " ", /* @__PURE__ */ React.createElement("i", {
+  className: "fa fa-info-circle",
+  style: {color: "#007bff"}
+})), /* @__PURE__ */ React.createElement("td", {
   style: {textAlign: "right"}
 }, U.formatAmount(d.amount.employee)), /* @__PURE__ */ React.createElement("td", {
   style: {textAlign: "right"}
@@ -23,9 +46,14 @@ const Table = ({
   const avsDeductions = deductions.filter((x) => AVSGroup.includes(x.type));
   const nonAvsDeductions = deductions.filter((x) => !AVSGroup.includes(x.type));
   const avsTotal = U.sumDeduction(avsDeductions);
-  const nonAvsTotal = U.sumDeduction(nonAvsDeductions);
   const net = base - (avsTotal + lppYearly);
-  return /* @__PURE__ */ React.createElement("table", {
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("button", {
+    id: "button",
+    "aria-describedby": "tooltip"
+  }, "I'm a button"), /* @__PURE__ */ React.createElement("div", {
+    id: "tooltip",
+    role: "tooltip"
+  }, "I'm a tooltip"), /* @__PURE__ */ React.createElement("table", {
     className: "table table-striped"
   }, /* @__PURE__ */ React.createElement("thead", null, /* @__PURE__ */ React.createElement("tr", null, /* @__PURE__ */ React.createElement("th", null, "GS"), /* @__PURE__ */ React.createElement("th", null, "Label"), /* @__PURE__ */ React.createElement("th", {
     colSpan: 2,
@@ -36,12 +64,15 @@ const Table = ({
   }, "Employer"))), /* @__PURE__ */ React.createElement("tbody", null, /* @__PURE__ */ React.createElement(TotalRow, {
     label: "Base",
     amount: base,
-    gs: 5e3
-  }), avsDeductions.map((d) => /* @__PURE__ */ React.createElement(TableRowDeduction, {
+    gs: 5e3,
+    key: 0
+  }), avsDeductions.map((d, i) => /* @__PURE__ */ React.createElement(TableRowDeduction, {
+    key: 100 + i,
     d
   })), /* @__PURE__ */ React.createElement(TotalRow, {
     label: "AVS Group",
-    amount: avsTotal
+    amount: avsTotal,
+    key: 1
   }), /* @__PURE__ */ React.createElement(TableRowDeduction, {
     d: {
       gs: 0,
@@ -49,13 +80,16 @@ const Table = ({
       type: T.DeductionType.LPP,
       rate: {employee: 100 * (lppYearly / base)},
       amount: {employee: lppYearly}
-    }
-  }), nonAvsDeductions.map((d) => /* @__PURE__ */ React.createElement(TableRowDeduction, {
-    d
+    },
+    key: 2
+  }), nonAvsDeductions.map((d, i) => /* @__PURE__ */ React.createElement(TableRowDeduction, {
+    d,
+    key: 200 + i
   })), /* @__PURE__ */ React.createElement(TotalRow, {
     label: "Net",
-    amount: net
-  })));
+    amount: net,
+    key: 3
+  }))));
 };
 const TotalRow = ({
   gs,
