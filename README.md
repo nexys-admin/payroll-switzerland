@@ -1,3 +1,3 @@
-# Digital Signature Made Easy
+# Payroll Switzerland
 
-[![Test Package](https://github.com/johnb8005/signature/actions/workflows/yarn.yml/badge.svg)](https://github.com/johnb8005/signature/actions/workflows/yarn.yml)
+[![Test Package](https://github.com/nexys-admin/payroll-switzerland/actions/workflows/yarn.yml/badge.svg)](https://github.com/nexys-admin/payroll-switzerland/actions/workflows/yarn.yml)
