@@ -1,32 +1,4 @@
-export var Canton;
-(function(Canton2) {
-  Canton2["ZH"] = "ZH";
-  Canton2["BE"] = "BE";
-  Canton2["LU"] = "LU";
-  Canton2["UR"] = "UR";
-  Canton2["SZ"] = "SZ";
-  Canton2["OW"] = "OW";
-  Canton2["NW"] = "NW";
-  Canton2["GL"] = "GL";
-  Canton2["ZG"] = "ZG";
-  Canton2["FR"] = "FR";
-  Canton2["SO"] = "SO";
-  Canton2["BS"] = "BS";
-  Canton2["BL"] = "BL";
-  Canton2["SH"] = "SH";
-  Canton2["AR"] = "AR";
-  Canton2["AI"] = "AI";
-  Canton2["SG"] = "SG";
-  Canton2["GR"] = "GR";
-  Canton2["AG"] = "AG";
-  Canton2["TG"] = "TG";
-  Canton2["TI"] = "TI";
-  Canton2["VD"] = "VD";
-  Canton2["VS"] = "VS";
-  Canton2["NE"] = "NE";
-  Canton2["GE"] = "GE";
-  Canton2["JU"] = "JU";
-})(Canton || (Canton = {}));
+import {Canton} from "./type.js";
 export const avgSalary = [
   ["Buchs", Canton.AG, 7625],
   ["Vevey", Canton.VD, 5905],
@@ -55,14 +27,3 @@ export const avgSalary = [
 ];
 export const cantonList = Object.values(Canton).filter((x) => typeof x == "number").map((x) => Canton[x]).map((x) => Canton[x]);
 export const cantonListOptionSet = Object.values(Canton).filter((x) => typeof x == "string").map((x) => ({id: x, name: Canton[x]})).sort((a, b) => a.name > b.name ? 1 : -1);
-export const getMunicipalities = async () => {
-  const filename = "/municipalities.tsv";
-  const r = await fetch(filename);
-  const t = await r.text();
-  const arr = t.split("\n").map((line) => line.split("	"));
-  const check = arr.filter((x) => x.length !== 8).length > 0;
-  if (check) {
-    throw Error(`${filename} could not be read`);
-  }
-  return arr;
-};

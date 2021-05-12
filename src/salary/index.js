@@ -3,12 +3,14 @@ import * as U from "./utils.js";
 import Table from "./table/index.js";
 import * as F from "../components/form/index.js";
 import * as Geo from "../geo/index.js";
+import * as GT from "../geo/type.js";
+import * as Municipality from "../geo/municipality.js";
 import AverageSalary from "./average-salary.js";
 export default () => {
   const [brut, setBrut] = React.useState("");
   const [lpp, setLpp] = React.useState("");
-  const [canton, setCanton] = React.useState(Geo.Canton.VD);
-  Geo.getMunicipalities().then((x) => console.log(x));
+  const [canton, setCanton] = React.useState(GT.Canton.VD);
+  Municipality.get().then((x) => console.log(x));
   return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(F.Form, null, /* @__PURE__ */ React.createElement(F.Wrapper, {
     label: "Base"
   }, /* @__PURE__ */ React.createElement(F.Input.Number, {

@@ -1,5 +1,6 @@
 import React from "../../_snowpack/pkg/react.js";
 import * as U from "./utils.js";
+import * as GT from "../geo/type.js";
 import * as Geo from "../geo/index.js";
 const addressToGMapLink = (a) => `https://www.google.com/maps?q=${encodeURIComponent(a)}`;
 const AvgSalary = ({canton}) => {
@@ -7,7 +8,7 @@ const AvgSalary = ({canton}) => {
   if (lines.length === 0) {
     return /* @__PURE__ */ React.createElement("div", {
       className: "alert alert-warning"
-    }, "Nothing found for canton ", Geo.Canton[canton]);
+    }, "Nothing found for canton ", GT.Canton[canton]);
   }
   return /* @__PURE__ */ React.createElement("table", {
     className: "table table-striped"

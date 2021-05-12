@@ -27,13 +27,7 @@ const Table = ({
   const nonAvsDeductions = deductions.filter((x) => !AVSGroup.includes(x.type));
   const avsTotal = U.sumDeduction(avsDeductions);
   const net = base - (avsTotal + lppYearly);
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("button", {
-    id: "button",
-    "aria-describedby": "tooltip"
-  }, "I'm a button"), /* @__PURE__ */ React.createElement("div", {
-    id: "tooltip",
-    role: "tooltip"
-  }, "I'm a tooltip"), /* @__PURE__ */ React.createElement("table", {
+  return /* @__PURE__ */ React.createElement("table", {
     className: "table table-striped"
   }, /* @__PURE__ */ React.createElement("thead", null, /* @__PURE__ */ React.createElement("tr", null, /* @__PURE__ */ React.createElement("th", null, "GS"), /* @__PURE__ */ React.createElement("th", null, "Label"), /* @__PURE__ */ React.createElement("th", {
     colSpan: 2,
@@ -69,7 +63,7 @@ const Table = ({
     label: "Net",
     amount: net,
     key: 3
-  }))));
+  })));
 };
 const TotalRow = ({
   gs,
