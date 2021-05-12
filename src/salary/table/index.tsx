@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { usePopper } from "react-popper";
+
 import * as U from "../utils";
 import * as T from "../type";
+
+const Example = () => {
+  const [referenceElement, setReferenceElement] = useState(null);
+  const [popperElement, setPopperElement] = useState(null);
+  const [arrowElement, setArrowElement] = useState(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    modifiers: [{ name: "arrow", options: { element: arrowElement } }],
+  });
+
+  return (
+    <>
+      <button type="button" ref={setReferenceElement}>
+        Reference element
+      </button>
+
+      <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+        Popper element
+        <div ref={setArrowElement} style={styles.arrow} />
+      </div>
+    </>
+  );
+};
 
 const AVSGroup = [
   T.DeductionType.AVS,
@@ -12,7 +36,8 @@ const TableRowDeduction = ({ d }: { d: T.DeductionWAmount }) => (
   <tr>
     <td>{d.gs}</td>
     <td>
-      {d.label} {T.DeductionType[d.type]}
+      {d.label} {T.DeductionType[d.type]}{" "}
+      <i className={"fa fa-info-circle"} style={{ color: "#007bff" }}></i>
     </td>
     <td style={{ textAlign: "right" }}>{U.formatAmount(d.amount.employee)}</td>
     <td style={{ textAlign: "right" }}>{U.formatRate(d.rate.employee)}</td>
@@ -33,45 +58,55 @@ const Table = ({
   const avsDeductions = deductions.filter((x) => AVSGroup.includes(x.type));
   const nonAvsDeductions = deductions.filter((x) => !AVSGroup.includes(x.type));
   const avsTotal = U.sumDeduction(avsDeductions);
-  const nonAvsTotal = U.sumDeduction(nonAvsDeductions);
+  //const nonAvsTotal = U.sumDeduction(nonAvsDeductions);
   const net = base - (avsTotal + lppYearly);
+
   return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>GS</th>
-          <th>Label</th>
-          <th colSpan={2} style={{ textAlign: "center" }}>
-            Employee
-          </th>
-          <th colSpan={2} style={{ textAlign: "center" }}>
-            Employer
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <TotalRow label={"Base"} amount={base} gs={5000} />
-        {avsDeductions.map((d) => (
-          <TableRowDeduction d={d} />
-        ))}
+    <>
+      <button id="button" aria-describedby="tooltip">
+        I'm a button
+      </button>
+      <div id="tooltip" role="tooltip">
+        I'm a tooltip
+      </div>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>GS</th>
+            <th>Label</th>
+            <th colSpan={2} style={{ textAlign: "center" }}>
+              Employee
+            </th>
+            <th colSpan={2} style={{ textAlign: "center" }}>
+              Employer
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <TotalRow label={"Base"} amount={base} gs={5000} key={0} />
+          {avsDeductions.map((d, i) => (
+            <TableRowDeduction key={100 + i} d={d} />
+          ))}
 
-        <TotalRow label={"AVS Group"} amount={avsTotal} />
-        <TableRowDeduction
-          d={{
-            gs: 0,
-            label: "LPP",
-            type: T.DeductionType.LPP,
-            rate: { employee: 100 * (lppYearly / base) },
-            amount: { employee: lppYearly },
-          }}
-        />
-        {nonAvsDeductions.map((d) => (
-          <TableRowDeduction d={d} />
-        ))}
+          <TotalRow label={"AVS Group"} amount={avsTotal} key={1} />
+          <TableRowDeduction
+            d={{
+              gs: 0,
+              label: "LPP",
+              type: T.DeductionType.LPP,
+              rate: { employee: 100 * (lppYearly / base) },
+              amount: { employee: lppYearly },
+            }}
+            key={2}
+          />
+          {nonAvsDeductions.map((d, i) => (
+            <TableRowDeduction d={d} key={200 + i} />
+          ))}
 
-        <TotalRow label={"Net"} amount={net} />
-      </tbody>
-    </table>
+          <TotalRow label={"Net"} amount={net} key={3} />
+        </tbody>
+      </table>
+    </>
   );
 };
 
