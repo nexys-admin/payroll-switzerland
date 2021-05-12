@@ -9,6 +9,7 @@ import * as GT from "../geo/type";
 import * as Municipality from "../geo/municipality";
 
 import AverageSalary from "./average-salary";
+import BaseSummary from "./base-summary";
 
 export default (): JSX.Element => {
   const [brut, setBrut] = React.useState<number | "">("");
@@ -24,7 +25,6 @@ export default (): JSX.Element => {
       <F.Form>
         <F.Wrapper label={"Base"}>
           <F.Input.Number value={brut} onChange={setBrut} />
-          {brut && <span>{U.formatAmount(brut / 12)}/mois</span>}
         </F.Wrapper>
         <F.Wrapper label={"LPP Yearly"}>
           <F.Input.Number value={lpp} onChange={setLpp} />
@@ -38,6 +38,8 @@ export default (): JSX.Element => {
           />
         </F.Wrapper>
       </F.Form>
+
+      {brut !== "" && <BaseSummary base={brut} />}
 
       {brut !== "" && lpp !== "" && (
         <Table lppYearly={lpp} base={brut} deductions={U.getDeductions(brut)} />
