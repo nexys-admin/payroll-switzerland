@@ -20,4 +20,6 @@ const AvgSalary = ({canton}) => {
     className: "fa fa-link"
   }))), /* @__PURE__ */ React.createElement("td", null, U.formatAmount(l[2]), " CHF/mois")))));
 };
-export default AvgSalary;
+export default ({canton}) => /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("h2", null, "Average Salary"), /* @__PURE__ */ React.createElement(AvgSalary, {
+  canton
+}));
