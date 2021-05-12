@@ -14,6 +14,7 @@ export default (): JSX.Element => {
       <F.Form>
         <F.Wrapper label={"Base"}>
           <F.InputNumber value={brut} onChange={setBrut} />
+           {brut && U.formatAmount(brut/12)}
         </F.Wrapper>
         <F.Wrapper label={"LPP Yearly"}>
           <F.InputNumber value={lpp} onChange={setLpp} />
