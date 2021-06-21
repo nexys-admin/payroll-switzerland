@@ -2,6 +2,8 @@ import React from "react";
 
 import { Link, BrowserRouter as Router } from "react-router-dom";
 
+import { menus } from "./links";
+
 const basename = import.meta.env.SNOWPACK_PUBLIC_URL;
 
 const style = {
@@ -11,8 +13,6 @@ const style = {
 };
 
 const title = "Payroll Switzerland";
-
-const menus = [];
 
 function Layout({ children }: { children: any }) {
   const header = (

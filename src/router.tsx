@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./home";
 import AverageSalary from "./average-salary/index";
+import Links from "./links";
 
 const NotFound = () => (
   <p>
@@ -12,8 +13,8 @@ const NotFound = () => (
 export default () => {
   return (
     <Switch>
-      <Route exact path={"/"} component={Home} />
-      <Route exact path={"/average-salary"} component={AverageSalary} />
+      <Route exact path={Links.calculator.link} component={Home} />
+      <Route exact path={Links.average.link} component={AverageSalary} />
       <Route component={NotFound} />
     </Switch>
   );
