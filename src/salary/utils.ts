@@ -149,5 +149,8 @@ export const formatAmount = (n?: number) => {
   return (p / 20).toLocaleString();
 };
 
-export const toIncome = (incomeGross: number, contributions: Contribution[]) =>
+export const toIncomeNet = (
+  incomeGross: number,
+  contributions: Contribution[]
+) =>
   incomeGross - contributions.map((x) => x.amount).reduce((a, b) => a + b, 0);

@@ -1,5 +1,6 @@
 // see https://docs.google.com/spreadsheets/d/1TSkKCcl2ytqf0wt0gCME5uJ-UW3K5AeHGn6F5bh5GDk/edit#gid=0
 // see https://drive.google.com/file/d/1J8Cq8Q3j-ek3m41nPuOgWQ6eDizNQ_86/view
+// see https://www.caisseavsvaud.ch/calculs-en-ligne/calcul-en-ligne-du-salaire-a-mentionner-sur-la-declaration-de-salaires/
 export const thresholdAC = 148200;
 export const thresholdACMonthly = thresholdAC / 12;
 
