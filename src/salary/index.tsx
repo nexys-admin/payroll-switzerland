@@ -8,7 +8,6 @@ import * as Geo from "../geo";
 import * as GT from "../geo/type";
 import * as Municipality from "../geo/municipality";
 
-import AverageSalary from "./average-salary";
 import BaseSummary from "./base-summary";
 
 export default (): JSX.Element => {
@@ -44,8 +43,6 @@ export default (): JSX.Element => {
       {brut !== "" && lpp !== "" && (
         <Table lppYearly={lpp} base={brut} deductions={U.getDeductions(brut)} />
       )}
-
-      {canton && <AverageSalary canton={canton} />}
     </>
   );
 };
