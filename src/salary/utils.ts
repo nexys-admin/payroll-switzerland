@@ -1,41 +1,95 @@
 import * as T from "./type";
 
-const thresholdAC = 148200;
+import * as Deductions from "./deductions";
+import { Contribution } from "./export/type";
 
 const deductions: T.Deduction[] = [
   {
     gs: 5010,
     label: "AVS",
-    rate: { employee: 5.15, employer: 5.275 },
+    rate: { employee: Deductions.avs, employer: Deductions.avs },
     type: T.DeductionType.AVS,
   },
   {
     gs: 5046, //?
     label: "APG",
-    rate: { employee: 0.125, employer: 0.125 },
+    rate: { employee: Deductions.apg, employer: Deductions.apg },
     type: T.DeductionType.AVS,
   },
   {
     gs: 5020,
     label: "AC1",
-    rate: { employee: 1.1, employer: 1.1 },
+    rate: { employee: Deductions.ac1, employer: Deductions.ac1 },
     type: T.DeductionType.AC1,
-    ceiling: thresholdAC,
+    ceiling: Deductions.thresholdAC,
   },
   {
     gs: 5030,
     label: "AC2",
-    rate: { employee: 0.5, employer: 0.5 },
-    floor: 148200,
+    rate: { employee: Deductions.ac2, employer: Deductions.ac2 },
+    floor: Deductions.thresholdAC,
     type: T.DeductionType.AC2,
   },
   {
     gs: 0,
     label: "PC Fam",
-    rate: { employee: 0.06 },
+    rate: { employee: Deductions.lpcfam },
     type: T.DeductionType.CAF,
   },
 ];
+
+const getAmountFiche = (
+  incomeGross: number,
+  { ceiling, floor }: { ceiling?: number; floor?: number }
+): number => {
+  if (ceiling && ceiling < incomeGross) {
+    return ceiling;
+  }
+
+  if (floor && floor < incomeGross) {
+    return incomeGross - floor;
+  }
+
+  return incomeGross;
+};
+
+export const getDeductionsFicheSalaire = (
+  incomeGross: number,
+  lpp: number
+): Contribution[] =>
+  [
+    {
+      label: "AVS",
+      rate: Deductions.avsApg,
+    },
+
+    {
+      label: "Cotisation AC1",
+      rate: Deductions.ac1,
+
+      ceiling: Deductions.thresholdAC,
+    },
+    {
+      label: "Cotisation AC2",
+      rate: Deductions.ac2,
+      floor: Deductions.thresholdAC,
+    },
+    {
+      label: "LPCFAM Cotisation",
+      rate: Deductions.lpcfam,
+    },
+    { label: "Cotisation LPP", amount: lpp },
+  ].map((x) => {
+    // if amount already exists, bypass calculation
+    if (x.amount) {
+      return { label: x.label, amount: x.amount || 0 };
+    }
+
+    const incomeBase: number = getAmountFiche(incomeGross, x);
+    const amount = (incomeBase * x.rate) / 100;
+
+    return { ...x, amount };
+  });
 
 const getAmount = (
   d: T.Deduction,
@@ -94,3 +148,6 @@ export const formatAmount = (n?: number) => {
   // todo format to .05
   return (p / 20).toLocaleString();
 };
+
+export const toIncome = (incomeGross: number, contributions: Contribution[]) =>
+  incomeGross - contributions.map((x) => x.amount).reduce((a, b) => a + b, 0);
