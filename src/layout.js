@@ -2,6 +2,7 @@ import * as __SNOWPACK_ENV__ from '../_snowpack/env.js';
 
 import React from "../_snowpack/pkg/react.js";
 import {Link, BrowserRouter as Router} from "../_snowpack/pkg/react-router-dom.js";
+import {menus} from "./links.js";
 const basename = __SNOWPACK_ENV__.SNOWPACK_PUBLIC_URL;
 const style = {
   borderTop: "1px solid #e5e5e5",
@@ -9,7 +10,6 @@ const style = {
   boxShadow: "0 .25rem .75rem rgba(0, 0, 0, .05)"
 };
 const title = "Payroll Switzerland";
-const menus = [];
 function Layout({children}) {
   const header = /* @__PURE__ */ React.createElement("header", null, /* @__PURE__ */ React.createElement("div", {
     style,
