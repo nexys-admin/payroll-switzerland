@@ -110,4 +110,4 @@ export const formatAmount = (n) => {
   const p = m - remainder;
   return (p / 20).toLocaleString();
 };
-export const toIncome = (incomeGross, contributions) => incomeGross - contributions.map((x) => x.amount).reduce((a, b) => a + b, 0);
+export const toIncomeNet = (incomeGross, contributions) => incomeGross - contributions.map((x) => x.amount).reduce((a, b) => a + b, 0);

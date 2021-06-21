@@ -1,4 +1,4 @@
-export const SNOWPACK_PUBLIC_GIT_SHA = "ce08deb8dd0e15870e7d8d5f46be5703fd088a83";
+export const SNOWPACK_PUBLIC_GIT_SHA = "075ef2023906cabb3ba16b95fb03ceabe24dce9a";
 export const SNOWPACK_PUBLIC_URL = "/payroll-switzerland";
 export const MODE = "development";
 export const NODE_ENV = "development";
