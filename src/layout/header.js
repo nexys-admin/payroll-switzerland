@@ -1,16 +1,12 @@
-import * as __SNOWPACK_ENV__ from '../_snowpack/env.js';
-
-import React from "../_snowpack/pkg/react.js";
-import {Link, BrowserRouter as Router} from "../_snowpack/pkg/react-router-dom.js";
-import {menus} from "./links.js";
-import Footer from "./footer.js";
-const basename = __SNOWPACK_ENV__.SNOWPACK_PUBLIC_URL;
+import React from "../../_snowpack/pkg/react.js";
+import {Link} from "../../_snowpack/pkg/react-router-dom.js";
+import {menus} from "../links.js";
+import {title} from "../config.js";
 const style = {
   borderTop: "1px solid #e5e5e5",
   borderBottom: "1px solid #e5e5e5",
   boxShadow: "0 .25rem .75rem rgba(0, 0, 0, .05)"
 };
-const title = "Payroll Switzerland";
 const Header = () => /* @__PURE__ */ React.createElement("header", null, /* @__PURE__ */ React.createElement("div", {
   style,
   className: "d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white"
@@ -25,11 +21,4 @@ const Header = () => /* @__PURE__ */ React.createElement("header", null, /* @__P
   key: i,
   to: menu.link
 }, menu.name)))));
-const Layout = ({children}) => {
-  return /* @__PURE__ */ React.createElement(Router, {
-    basename
-  }, /* @__PURE__ */ React.createElement(Header, null), /* @__PURE__ */ React.createElement("div", {
-    className: "container"
-  }, children), /* @__PURE__ */ React.createElement(Footer, null));
-};
-export default Layout;
+export default Header;

@@ -1,5 +1,5 @@
-import React from "../_snowpack/pkg/react.js";
-import * as C from "./config.js";
+import React from "../../_snowpack/pkg/react.js";
+import * as C from "../config.js";
 const Footer = () => /* @__PURE__ */ React.createElement("footer", {
   class: "footer"
 }, /* @__PURE__ */ React.createElement("div", {
