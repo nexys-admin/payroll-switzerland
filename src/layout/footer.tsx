@@ -1,5 +1,5 @@
 import React from "react";
-import * as C from './config';
+import * as C from '../config';
 
 const Footer = () =>  <footer class="footer">
   <div class="container">
