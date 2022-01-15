@@ -1,7 +1,7 @@
 import React from "react";
 
-import * as U from "../../lib/salary";
-import { Contribution, SalaryType } from "../export/type";
+import * as U from "../../lib/salary/utils";
+import { Contribution, SalaryType } from "../../lib/salary/export/type";
 import * as PDFExport from "../export";
 
 import { Month, MonthData } from "./type";

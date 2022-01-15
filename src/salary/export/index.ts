@@ -1,6 +1,10 @@
 //import { TDocumentDefinitions } from "pdfmake/interfaces";
-import { SalaryItem } from "./type";
-import { formatDate, formatNumber, getFilename } from "./utils";
+import { SalaryItem } from "../../lib/salary/export/type";
+import {
+  formatDate,
+  formatNumber,
+  getFilename,
+} from "../../lib/salary/export/utils";
 
 import pdfMake from "pdfmake/build/pdfmake.min";
 import pdfFonts from "./vfs_fonts";
