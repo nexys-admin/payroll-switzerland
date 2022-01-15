@@ -1,5 +1,5 @@
 import React from "react";
-import * as U from "../salary/utils";
+import * as U from "../lib/salary/utils";
 
 import * as GT from "../geo/type";
 import * as Geo from "../geo";

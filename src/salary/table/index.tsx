@@ -1,7 +1,7 @@
 import React from "react";
 
 import * as U from "../../lib/salary";
-import * as T from "../type";
+import * as T from "../../lib/salary/type";
 
 const AVSGroup = [
   T.DeductionType.AVS,
