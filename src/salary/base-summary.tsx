@@ -1,5 +1,6 @@
 import React from "react";
-import * as U from "./utils";
+
+import * as U from "../lib/salary";
 
 const BaseSummary = ({ base }: { base: number }) => {
   return (

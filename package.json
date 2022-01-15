@@ -19,6 +19,7 @@
   "scripts": {
     "start": "SNOWPACK_PUBLIC_URL= snowpack dev",
     "build": "snowpack build",
+    "buildpackage": "tsc -p tsconfig.build.json",
     "test": "echo \"no test\""
   },
   "devDependencies": {

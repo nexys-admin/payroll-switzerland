@@ -6,21 +6,17 @@ on:
       - v*
 
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 13
+          node-version: 14
       - run: yarn
       - run: yarn test
-      - name: Build page
-        run: SNOWPACK_PUBLIC_VERSION=${GITHUB_REF##*/} SNOWPACK_PUBLIC_GIT_SHA=$GITHUB_SHA SNOWPACK_PUBLIC_URL=/payroll-switzerland yarn build
-      - name: add 404
-        run: cp build/index.html build/404.html
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./build
+      - run: yarn buildpackage
+      - name: Publish package
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+          yarn publish --access public

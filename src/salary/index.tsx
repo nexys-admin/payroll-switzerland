@@ -1,5 +1,5 @@
 import React from "react";
-import * as U from "./utils";
+import * as U from "../lib/salary";
 
 import Table from "./table";
 

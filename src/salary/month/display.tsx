@@ -1,9 +1,10 @@
 import React from "react";
-import { Contribution, SalaryType } from "../export/type";
-import { Month, MonthData } from "./type";
-import * as U from "../utils";
 
+import * as U from "../../lib/salary";
+import { Contribution, SalaryType } from "../export/type";
 import * as PDFExport from "../export";
+
+import { Month, MonthData } from "./type";
 
 const DisplayMonth = ({
   data,
