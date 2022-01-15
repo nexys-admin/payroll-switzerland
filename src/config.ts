@@ -5,3 +5,5 @@ export const ghUrlSha = `${ghUrl}/commit/${sha}`;
 
 export const version = import.meta.env.SNOWPACK_PUBLIC_VERSION || "unset_version";
 export const ghUrlVersion= `${ghUrl}/releases/tag/${version}`;
+
+export const title = "Payroll Switzerland";

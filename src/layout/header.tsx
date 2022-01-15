@@ -1,20 +1,14 @@
 import React from "react";
 
-import { Link, BrowserRouter as Router } from "react-router-dom";
-
-import { menus } from "./links";
-import Footer from './footer';
-
-const basename = import.meta.env.SNOWPACK_PUBLIC_URL;
+import { Link} from "react-router-dom";
+import { menus } from "../links";
+import { title } from '../config';
 
 const style = {
   borderTop: "1px solid #e5e5e5",
   borderBottom: "1px solid #e5e5e5",
   boxShadow: "0 .25rem .75rem rgba(0, 0, 0, .05)",
 };
-
-const title = "Payroll Switzerland";
-
 
 const Header = () => (
   <header>
@@ -36,14 +30,4 @@ const Header = () => (
   </header>
 );
 
-
-const Layout = ({ children }: { children: any }) => {
-  return (
-    <Router basename={basename}>
-      <Header/>
-      <div className="container">{children}</div>
-      <Footer/>
-    </Router>
-  );
-}
-export default Layout;
+export default Header;
