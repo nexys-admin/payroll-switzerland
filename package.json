@@ -1,6 +1,6 @@
 {
-  "name": "signature",
-  "version": "1.0.0",
+  "name": "@nexys-admin/payroll",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
