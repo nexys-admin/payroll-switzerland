@@ -1,6 +1,6 @@
 import React from "react";
 
-import * as U from "../../lib/salary";
+import * as U from "../../lib/salary/utils";
 import * as T from "../../lib/salary/type";
 
 const AVSGroup = [
