@@ -1,12 +1,6 @@
 import React from "react";
 import Salary from "./salary";
-const ghUrl = "https://github.com/nexys-admin/payroll-switzerland";
-
-// const sha = import.meta.env.SNOWPACK_PUBLIC_GIT_SHA || "unset_sha";
-// const ghUrlSha = `${ghUrl}/commit/${sha}`;
-
-const version = import.meta.env.SNOWPACK_PUBLIC_VERSION || "unset_version";
-const ghUrlVersion= `${ghUrl}/releases/tag/${version}`;
+import * as C from './config'
 
 export default () => (
   <>
@@ -14,6 +8,7 @@ export default () => (
 
     <Salary />
 
+    <br/>
     <p>
       <a href={ghUrl}>
         <i className="fa fa-code"></i> Source
@@ -23,7 +18,7 @@ export default () => (
 
     <p>
       <small>
-        <a href={ghUrlVersion}>{version}</a>
+        <a href={C.ghUrlVersion}>{C.version}</a>
       </small>
     </p>
   </>
