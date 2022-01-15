@@ -10,7 +10,7 @@ const Footer = () => /* @__PURE__ */ React.createElement("footer", {
 }, " ", /* @__PURE__ */ React.createElement("a", {
   href: C.ghUrlVersion
 }, C.version), " -  ", /* @__PURE__ */ React.createElement("a", {
-  href: ghUrl
+  href: C.ghUrl
 }, /* @__PURE__ */ React.createElement("i", {
   className: "fa fa-code"
 }), " Source"), " available under MIT license. Contributions are welcome.")));
