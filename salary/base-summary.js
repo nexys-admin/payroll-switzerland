@@ -1,5 +1,5 @@
 import React from "../_snowpack/pkg/react.js";
-import * as U from "./utils.js";
+import * as U from "../lib/salary/utils.js";
 const BaseSummary = ({base}) => {
   return /* @__PURE__ */ React.createElement("table", {
     className: "table"

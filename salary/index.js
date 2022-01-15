@@ -1,5 +1,5 @@
 import React from "../_snowpack/pkg/react.js";
-import * as U from "./utils.js";
+import * as U from "../lib/salary/utils.js";
 import Table from "./table/index.js";
 import * as F from "../components/form/index.js";
 import * as Geo from "../geo/index.js";

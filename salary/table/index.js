@@ -1,6 +1,6 @@
 import React from "../../_snowpack/pkg/react.js";
-import * as U from "../utils.js";
-import * as T from "../type.js";
+import * as U from "../../lib/salary/utils.js";
+import * as T from "../../lib/salary/type.js";
 const AVSGroup = [
   T.DeductionType.AVS,
   T.DeductionType.AC1,

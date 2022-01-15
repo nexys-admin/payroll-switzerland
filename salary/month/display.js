@@ -1,8 +1,8 @@
 import React from "../../_snowpack/pkg/react.js";
-import {SalaryType} from "../export/type.js";
-import {Month} from "./type.js";
-import * as U from "../utils.js";
+import * as U from "../../lib/salary/utils.js";
+import {SalaryType} from "../../lib/salary/export/type.js";
 import * as PDFExport from "../export/index.js";
+import {Month} from "./type.js";
 const DisplayMonth = ({
   data,
   lpp,

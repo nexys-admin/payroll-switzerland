@@ -1,5 +1,5 @@
 import React from "../_snowpack/pkg/react.js";
-import * as U from "../salary/utils.js";
+import * as U from "../lib/salary/utils.js";
 import * as GT from "../geo/type.js";
 import * as Geo from "../geo/index.js";
 const addressToGMapLink = (a) => `https://www.google.com/maps?q=${encodeURIComponent(a)}`;

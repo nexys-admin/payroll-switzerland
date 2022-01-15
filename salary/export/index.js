@@ -1,4 +1,8 @@
-import {formatDate, formatNumber, getFilename} from "./utils.js";
+import {
+  formatDate,
+  formatNumber,
+  getFilename
+} from "../../lib/salary/export/utils.js";
 import pdfMake from "../../_snowpack/pkg/pdfmake/build/pdfmake.min.js";
 import pdfFonts from "./vfs_fonts.js";
 pdfMake.vfs = pdfFonts;
