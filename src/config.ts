@@ -1,4 +1,4 @@
-const ghUrl = "https://github.com/nexys-admin/payroll-switzerland";
+export const ghUrl = "https://github.com/nexys-admin/payroll-switzerland";
 
 export const sha = import.meta.env.SNOWPACK_PUBLIC_GIT_SHA || "unset_sha";
 export const ghUrlSha = `${ghUrl}/commit/${sha}`;
